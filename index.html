@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div id="login-area" class="userForm container">
+        <h1 class="bank-title text-center">Welcome To TTTI Bank System</h1>
+        <div class="submit-area">
+            <h4 class="login-title">Login</h4>
+            <input type="text" placeholder="Email" class="form-control">
+            <br />
+            <input type="password" placeholder="Password" class="form-control">
+            <br />
+            <button id="login" class="btn btn-success">Enter</button>
+        </div>
+
+    </div>
+    <!-- start deposite, withdraw, balance area  -->
+    <div id="area">
+        <div class="container">
+            <h1 class="text-center pb-5"> Account Section </h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="deposite" class="deposite">
+                        <h2 class="text-center">Deposite</h2>
+                        <h5 class="text-center">$<span id="DepositeOfTotal">00</span></h5>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="withdraw">
+                        <h2 class="text-center">Withdraw</h2>
+                        <h5 class="text-center">$<span id="AmountWidthdraw">00</span></h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="balance">
+                        <h2 class="text-center">Balance</h2>
+                        <h5 class="text-center">$<span id="totalBalance">1200</span></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- form section  -->
+            <div class="form mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="deposite_filed p-5">
+                            <h2 class="pb-2 text-center">Deposite</h2>
+
+                            <input id="amountDeposite" type="text" placeholder="$ Enter your amount" name=""
+                                class="form-control">
+                            <br />
+                            <button id="depositeButton" class="btn btn-success">Deposite</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="deposite_filed p-5">
+                            <h2 class="pb-2 text-center">Withdraw</h2>
+
+                            <input id="withdrawInSys" type="text" placeholder="$ Enter Withdraw amount" name=""
+                                class="form-control">
+                            <br />
+                            <button id="withdrawBtn" class="btn btn-success">Withdraw</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        const loginId = document.getElementById("login");
+        loginId.addEventListener('click', function () {
+            const loginArea = document.getElementById("login-area").style.display = "none";
+            const newSecton = document.getElementById("area")
+            newSecton.style.display = "block";
+
+        })
+        // this is deposite field
+        const depositeButton = document.getElementById("depositeButton");
+        depositeButton.addEventListener('click', function () {
+            const depositeCurrency = getInput('amountDeposite');
+            if (depositeCurrency < 0) {
+                alert("amount cannot deposite minus amount");
+
+            }
+            else {
+                planText('DepositeOfTotal', depositeCurrency);
+                planTextTwo('totalBalance', depositeCurrency);
+                document.getElementById('amountDeposite').value = "";
+
+            }
+           
+
+
+
+        })
+        // this is withdraw function of payroll
+        const withdrawBtn = document.getElementById('withdrawBtn');
+        withdrawBtn.addEventListener('click', function () {
+            const bDraw = getInput('withdrawInSys');
+            planText('AmountWidthdraw', bDraw);
+            planTextTwo('totalBalance', -1 * bDraw);
+
+
+        })
+
+        function getInput(id) {
+            const amount = document.getElementById(id).value;
+            const amountdraw = parseFloat(amount);
+            return amountdraw;
+
+        }
+        function planText(id, depositeCurrency) {
+            const DepositeTotal = document.getElementById(id).innerText;
+            const recentCurrency = parseFloat(DepositeTotal);
+            const totalAmount = depositeCurrency + recentCurrency;
+            document.getElementById(id).innerText = totalAmount;
+
+        }
+        function planTextTwo(id, depositeCurrency) {
+            const totalBalance = document.getElementById(id).innerText;
+            const presentNumber = parseFloat(totalBalance);
+            const totalBalanceOfAmount = depositeCurrency + presentNumber;
+            document.getElementById(id).innerText = totalBalanceOfAmount;
+
+
+        }
+
+    </script>
+</body>
+
+</html>

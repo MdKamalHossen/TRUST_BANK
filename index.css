@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    padding: 100px;
+  
+   
+}
+.bank-title{
+    color: rgb(172, 100, 5);
+    font-family: 'Roboto',sans-serif; 
+    font-weight: 700;
+    padding-bottom: 50px;
+}
+.submit-area{
+padding: 30px;
+box-shadow: 9px 11px  14px #8A8989;
+border-radius: 5px;
+}
+.login-title{
+    font-size: 35px;
+}
+#area{
+    display: none;
+}
+.box{
+   
+    background-color: orange;
+    border-radius: 5px ;
+    color: #fff;
+    
+    
+}
+.deposite{
+    background-color: salmon;
+    padding: 50px;
+    border-radius: 8px;
+    color: #fff;
+}
+.withdraw{
+    background-color: rgb(88, 10, 102);
+    padding: 50px;
+    border-radius: 8px;
+    color: #fff;
+}
+.balance{
+    background-color: rgb(4, 117, 47);
+    padding: 50px;
+    border-radius: 8px;
+    color: #fff;
+}
+.deposite_filed{
+    margin-top: 50px;
+    box-shadow: 2px 6px 14px 8px #f1eded;
+    border-radius: 10px;
+}
